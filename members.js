@@ -6,7 +6,7 @@ const members = [
 
   { id: 1,  name: "永久輝せあ", group: "花組", image: "images/hanagumi/1.JPEG" },
   { id: 2,  name: "星空美咲", group: "花組", image: "images/hanagumi/2.JPEG" },
-  { id: 6,  name: "紫門ゆりや", group: "花組", image: "images/hanagumi/6.JPEG" },
+  { id: 6,  name: "紫門ゆりや", group: "花組", image: "images/hanagumi/4.JPEG" },
   { id: 10, name: "聖乃あすか", group: "花組", image: "images/hanagumi/10.JPEG" },
   { id: 11, name: "一之瀬航季", group: "花組", image: "images/hanagumi/11.JPEG" },
   { id: 12, name: "極美慎", group: "花組", image: "images/hanagumi/12.JPEG" },
