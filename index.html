@@ -1,1 +1,2756 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>宝塚 路線スター 好き顔TOP5</title>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+:root{
+  --blue:#77bceb;
+  --blue2:#a9d8f5;
+  --blue3:#eaf7ff;
+  --deep:#355c7d;
+  --text:#293747;
+  --white:#ffffff;
+}
+
+body{
+  margin:0;
+  color:var(--text);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+
+  background:
+    radial-gradient(circle at 10% 5%,rgba(148,211,248,.28),transparent 24%),
+    radial-gradient(circle at 90% 18%,rgba(195,228,249,.34),transparent 24%),
+    linear-gradient(180deg,#f8fdff 0%,#edf8ff 100%);
+
+  min-height:100vh;
+}
+
+button{
+  font:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+
+button:disabled{
+  opacity:.42;
+}
+
+/* =========================
+   全体
+========================= */
+
+.wrap{
+  width:min(100%,760px);
+  margin:auto;
+  padding:18px 14px 70px;
+}
+
+/* =========================
+   ヘッダー
+========================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:29px 14px 25px;
+  margin-bottom:14px;
+  background:rgba(255,255,255,.82);
+  border:1px solid #d8edf9;
+  border-radius:26px;
+  box-shadow:0 10px 30px rgba(61,127,170,.10);
+}
+
+.hero::before,
+.hero::after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:42px;
+  background:#9ed7f5;
+  opacity:.18;
+  border-radius:50%;
+  transform:rotate(-13deg);
+}
+
+.hero::before{
+  left:-45px;
+  top:26px;
+}
+
+.hero::after{
+  right:-45px;
+  bottom:25px;
+  transform:rotate(15deg);
+}
+
+.eyebrow{
+  color:#7ea9c7;
+  font-family:Georgia,serif;
+  letter-spacing:.20em;
+  font-size:12px;
+  margin-bottom:7px;
+}
+
+h1{
+  position:relative;
+  margin:0;
+  font-size:clamp(27px,7vw,45px);
+  line-height:1.18;
+  letter-spacing:.02em;
+  color:#30485e;
+}
+
+h1 .blue{
+  color:#68afe0;
+}
+
+.heroText{
+  position:relative;
+  margin:12px auto 0;
+  max-width:570px;
+  font-size:12px;
+  line-height:1.8;
+  color:#667b8c;
+}
+
+.sparkles{
+  margin-top:11px;
+  color:#8fc8eb;
+  letter-spacing:.5em;
+}
+
+/* =========================
+   進捗
+========================= */
+
+.progress{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  margin:14px 2px;
+}
+
+.progressItem{
+  text-align:center;
+  color:#9aa9b5;
+  font-size:10px;
+}
+
+.progressCircle{
+  margin:0 auto 5px;
+  width:31px;
+  height:31px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:#e5edf2;
+  font-weight:800;
+}
+
+.progressItem.active{
+  color:#4b9bd0;
+  font-weight:800;
+}
+
+.progressItem.active .progressCircle{
+  color:white;
+  background:linear-gradient(135deg,#82c9f2,#60aee0);
+  box-shadow:0 4px 12px rgba(72,157,214,.25);
+}
+
+/* =========================
+   パネル
+========================= */
+
+.panel{
+  background:rgba(255,255,255,.94);
+  border:1px solid #dceef8;
+  border-radius:23px;
+  padding:17px;
+  box-shadow:0 9px 27px rgba(58,124,164,.09);
+}
+
+.stageTitle{
+  text-align:center;
+  margin:2px 0 5px;
+  font-size:21px;
+  color:#345c78;
+}
+
+.stageDescription{
+  text-align:center;
+  font-size:12px;
+  color:#8496a3;
+  line-height:1.65;
+  margin-bottom:14px;
+}
+
+.counter{
+  text-align:center;
+  font-weight:800;
+  color:#519ed0;
+  margin:4px 0 13px;
+  font-size:13px;
+}
+
+/* =========================
+   人物カード
+========================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:9px;
+}
+
+.card{
+  position:relative;
+  overflow:hidden;
+  padding:5px 5px 9px;
+  background:white;
+  border:2px solid #e6eef3;
+  border-radius:16px;
+  cursor:pointer;
+  transition:.15s ease;
+  box-shadow:0 3px 10px rgba(47,86,110,.06);
+}
+
+.card:active{
+  transform:scale(.98);
+}
+
+.card.selected{
+  border-color:#69b9e9;
+  background:#f0faff;
+  box-shadow:
+    0 0 0 3px rgba(105,185,233,.12),
+    0 6px 15px rgba(61,146,200,.14);
+}
+
+.photoWrap{
+  width:100%;
+  aspect-ratio:3/4;
+  border-radius:11px;
+  overflow:hidden;
+  background:#eef3f6;
+}
+
+.photoWrap img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.check{
+  position:absolute;
+  right:8px;
+  top:8px;
+  z-index:2;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.93);
+  border:2px solid #b9d8ea;
+  color:white;
+  font-size:14px;
+  font-weight:900;
+}
+
+.card.selected .check{
+  background:#65b5e6;
+  border-color:#65b5e6;
+}
+
+.group{
+  text-align:center;
+  font-size:11px;
+  font-weight:800;
+  margin-top:7px;
+}
+
+.name{
+  text-align:center;
+  margin-top:2px;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.3;
+}
+
+/* 組カラー */
+.g-花組{color:#ef8fb2;}
+.g-月組{color:#d3ae34;}
+.g-雪組{color:#71b99a;}
+.g-星組{color:#65b9df;}
+.g-宙組{color:#a58bd8;}
+.g-専科{color:#74569e;}
+
+/* =========================
+   ボタン
+========================= */
+
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:17px;
+}
+
+.btn{
+  border:0;
+  border-radius:999px;
+  padding:13px 15px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btnPrimary{
+  flex:1;
+  color:white;
+  background:linear-gradient(135deg,#82c9f2,#58a8dd);
+  box-shadow:0 6px 15px rgba(72,157,214,.23);
+}
+
+.btnSecondary{
+  color:#5389ad;
+  background:#f3faff;
+  border:1px solid #c9e5f5;
+}
+
+.btnFull{
+  width:100%;
+  margin-top:10px;
+}
+
+.notice{
+  margin-top:13px;
+  padding:11px 13px;
+  border-radius:13px;
+  background:#f1faff;
+  color:#62839a;
+  font-size:12px;
+  line-height:1.6;
+  text-align:center;
+}
+
+/* =========================
+   1対1
+========================= */
+
+.duel{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.duelCard{
+  padding:7px 7px 13px;
+  border-radius:19px;
+  background:#fff;
+  border:2px solid #d9edf8;
+  text-align:center;
+  cursor:pointer;
+  box-shadow:0 7px 19px rgba(62,119,155,.09);
+}
+
+.duelCard:active{
+  transform:scale(.985);
+}
+
+.duelCard img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:14px;
+  display:block;
+}
+
+.duelOr{
+  text-align:center;
+  color:#7ab8dd;
+  font-family:Georgia,serif;
+  font-style:italic;
+  margin:14px 0;
+}
+
+/* =========================
+   結果
+========================= */
+
+.resultHeader{
+  text-align:center;
+}
+
+.resultHeader .crown{
+  font-size:31px;
+}
+
+.resultHeader h2{
+  margin:5px 0;
+  color:#396985;
+  font-size:26px;
+}
+
+.resultGrid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:7px;
+  margin-top:17px;
+}
+
+.resultCard{
+  position:relative;
+  text-align:center;
+  background:#fff;
+  padding:4px 4px 8px;
+  border:1px solid #d9edf8;
+  border-radius:14px;
+}
+
+.resultCard img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  border-radius:10px;
+  display:block;
+}
+
+.rankBadge{
+  position:absolute;
+  top:-8px;
+  left:50%;
+  transform:translateX(-50%);
+  min-width:29px;
+  height:29px;
+  padding:0 7px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#78bce7;
+  color:white;
+  font-weight:900;
+  border:2px solid white;
+}
+
+.resultCard:nth-child(1){
+  border:2px solid #d9b84c;
+}
+
+.resultCard:nth-child(1) .rankBadge{
+  background:#d7b437;
+}
+
+.resultCard:nth-child(2) .rankBadge{
+  background:#aab7c2;
+}
+
+.resultCard:nth-child(3) .rankBadge{
+  background:#c78a61;
+}
+
+.resultName{
+  margin-top:7px;
+  font-size:10px;
+  font-weight:800;
+  line-height:1.3;
+}
+
+.resultGroup{
+  font-size:9px;
+  margin-top:2px;
+  font-weight:700;
+}
+
+.preview{
+  margin-top:14px;
+  padding:10px;
+  background:#eef9ff;
+  border-radius:17px;
+  text-align:center;
+}
+
+.preview img{
+  width:100%;
+  border-radius:13px;
+  display:block;
+}
+
+.previewText{
+  font-size:11px;
+  color:#6e899b;
+  margin:8px 0 4px;
+}
+
+.hidden{
+  display:none!important;
+}
+
+/* =========================
+   スマホ
+========================= */
+
+@media(max-width:480px){
+
+  .wrap{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .panel{
+    padding:12px;
+  }
+
+  .grid{
+    gap:6px;
+  }
+
+  .card{
+    border-radius:13px;
+    padding:4px 4px 7px;
+  }
+
+  .name{
+    font-size:11px;
+  }
+
+  .group{
+    font-size:10px;
+  }
+
+  .resultGrid{
+    gap:4px;
+  }
+
+  .resultName{
+    font-size:8px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">MY TAKARAZUKA FAVORITES</div>
+
+    <h1>
+      宝塚 路線スター<br>
+      <span class="blue">好き顔 TOP5</span>
+    </h1>
+
+    <div class="heroText">
+      新公主演経験者＆別箱ヒロイン経験者から選ぶ♡<br>
+      あなたの「好き顔」TOP5を決めよう！
+    </div>
+
+    <div class="sparkles">✧ ♡ ✧</div>
+  </header>
+
+
+  <div class="progress" id="progress"></div>
+
+  <main id="app"></main>
+
+</div>
+
+
+<script src="members.js"></script>
+
+<script>
+
+/* =========================
+   基本設定
+========================= */
+
+const SAVE_KEY =
+  "takarazukaStarTop5StateV1";
+
+const HISTORY_KEY =
+  "takarazukaStarTop5HistoryV1";
+
+const PAGE_SIZE = 9;
+
+let preparedFile = null;
+let preparedURL = null;
+
+
+/* =========================
+   シャッフル
+========================= */
+
+function shuffle(array){
+
+  const a = [...array];
+
+  for(let i=a.length-1;i>0;i--){
+
+    const j =
+      Math.floor(
+        Math.random()*(i+1)
+      );
+
+    [a[i],a[j]] =
+      [a[j],a[i]];
+  }
+
+  return a;
+}
+
+
+/* =========================
+   初期状態
+========================= */
+
+function initialState(){
+
+  return {
+    stage:"home",
+
+    order:
+      shuffle(
+        members.map(m=>m.id)
+      ),
+
+    page:0,
+
+    selected:[],
+
+    pool:[],
+
+    narrowPage:0,
+    narrowSelected:[],
+
+    rankingPool:[],
+    sorted:[],
+    insertIndex:0,
+    compareIndex:0,
+
+    result:[]
+  };
+}
+
+
+let state =
+  loadState()
+  || initialState();
+
+
+/* =========================
+   保存
+========================= */
+
+function saveState(){
+
+  localStorage.setItem(
+    SAVE_KEY,
+    JSON.stringify(state)
+  );
+}
+
+
+function loadState(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        SAVE_KEY
+      )
+    );
+
+  }catch{
+
+    return null;
+  }
+}
+
+
+/* =========================
+   人物取得
+========================= */
+
+function memberById(id){
+
+  return members.find(
+    m=>m.id===id
+  );
+}
+
+
+/* =========================
+   画像ロード
+========================= */
+
+function loadImage(src){
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      const image =
+        new Image();
+
+      image.onload =
+        ()=>resolve(image);
+
+      image.onerror =
+        reject;
+
+      image.src =
+        src;
+    }
+  );
+}
+
+
+/* =========================
+   進捗
+========================= */
+
+function renderProgress(){
+
+  const el =
+    document.getElementById(
+      "progress"
+    );
+
+  const steps = [
+    ["1","選ぶ"],
+    ["2","絞り込み"],
+    ["3","順位決定"],
+    ["4","TOP5"]
+  ];
+
+  let active = 1;
+
+  if(state.stage==="narrow"){
+    active=2;
+  }
+
+  if(state.stage==="rank"){
+    active=3;
+  }
+
+  if(state.stage==="result"){
+    active=4;
+  }
+
+  if(state.stage==="home"){
+    active=1;
+  }
+
+  el.innerHTML =
+    steps.map(
+      (step,index)=>`
+
+      <div class="
+        progressItem
+        ${index+1===active
+          ?"active":""}
+      ">
+        <div class="progressCircle">
+          ${step[0]}
+        </div>
+
+        ${step[1]}
+      </div>
+
+    `).join("");
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+function renderHome(){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+  app.innerHTML=`
+
+    <section class="panel">
+
+      <h2 class="stageTitle">
+        あなたの好き顔TOP5は？
+      </h2>
+
+      <div class="stageDescription">
+        候補は全部で
+        <strong>${members.length}人</strong>。<br>
+        まずは気になる人を自由に選んでね♡
+      </div>
+
+      <div class="notice">
+        最初の段階では何人選んでもOK！<br>
+        あとから少しずつ5人まで
+        絞り込んでいきます。
+      </div>
+
+      <button
+        class="btn btnPrimary btnFull"
+        onclick="startGame()"
+      >
+        TOP5を決める
+      </button>
+
+      ${
+        localStorage.getItem(
+          SAVE_KEY
+        )
+        && state.stage!=="home"
+        ?`
+          <button
+            class="btn btnSecondary btnFull"
+            onclick="continueGame()"
+          >
+            続きから
+          </button>
+        `
+        :""
+      }
+
+      <button
+        class="btn btnSecondary btnFull"
+        onclick="showHistory()"
+      >
+        過去のTOP5を見る
+      </button>
+
+    </section>
+  `;
+}
+
+
+function startGame(){
+
+  state =
+    initialState();
+
+  state.stage =
+    "select";
+
+  saveState();
+  render();
+}
+
+
+function continueGame(){
+  render();
+}
+
+
+/* =========================
+   最初の選択
+========================= */
+
+function renderSelection(){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+  const start =
+    state.page*PAGE_SIZE;
+
+  const ids =
+    state.order.slice(
+      start,
+      start+PAGE_SIZE
+    );
+
+  const totalPages =
+    Math.ceil(
+      state.order.length
+      /PAGE_SIZE
+    );
+
+  app.innerHTML=`
+
+    <section class="panel">
+
+      <h2 class="stageTitle">
+        好きな人を選ぼう
+      </h2>
+
+      <div class="stageDescription">
+        「好き顔！」と思う人をタップ。<br>
+        何人選んでもOK♡
+      </div>
+
+      <div class="counter">
+        ${state.page+1} / ${totalPages}
+        　♡ 選択中 ${state.selected.length}人
+      </div>
+
+      <div class="grid">
+
+        ${ids.map(
+          id=>personCard(
+            id,
+            state.selected.includes(id),
+            `toggleSelect(${id})`
+          )
+        ).join("")}
+
+      </div>
+
+      <div class="actions">
+
+        ${
+          state.page>0
+          ?`
+            <button
+              class="btn btnSecondary"
+              onclick="previousSelectionPage()"
+            >
+              前へ
+            </button>
+          `
+          :""
+        }
+
+        <button
+          class="btn btnPrimary"
+          onclick="nextSelectionPage()"
+        >
+          ${
+            state.page
+            ===totalPages-1
+            ?"選択を終える"
+            :"次の9人"
+          }
+        </button>
+
+      </div>
+
+    </section>
+  `;
+
+  preloadNextPage();
+}
+
+
+function personCard(
+  id,
+  selected,
+  action
+){
+
+  const m =
+    memberById(id);
+
+  if(!m){
+    return "";
+  }
+
+  return `
+
+    <div
+      class="
+        card
+        ${selected
+          ?"selected":""}
+      "
+      onclick="${action}"
+    >
+
+      <div class="check">
+        ${selected?"✓":""}
+      </div>
+
+      <div class="photoWrap">
+        <img
+          src="${m.image}"
+          alt=""
+          loading="eager"
+        >
+      </div>
+
+      <div
+        class="group g-${m.group}"
+      >
+        ${m.group}
+      </div>
+
+      <div class="name">
+        ${m.name}
+      </div>
+
+    </div>
+  `;
+}
+
+
+function toggleSelect(id){
+
+  if(
+    state.selected.includes(id)
+  ){
+
+    state.selected =
+      state.selected.filter(
+        x=>x!==id
+      );
+
+  }else{
+
+    state.selected.push(id);
+  }
+
+  saveState();
+  renderSelection();
+}
+
+
+function previousSelectionPage(){
+
+  if(state.page>0){
+    state.page--;
+  }
+
+  saveState();
+  renderSelection();
+}
+
+
+function nextSelectionPage(){
+
+  const totalPages =
+    Math.ceil(
+      state.order.length
+      /PAGE_SIZE
+    );
+
+  if(
+    state.page
+    <totalPages-1
+  ){
+
+    state.page++;
+
+    saveState();
+    renderSelection();
+    return;
+  }
+
+  finishSelection();
+}
+
+
+/* =========================
+   次ページ先読み
+========================= */
+
+function preloadNextPage(){
+
+  const nextStart =
+    (state.page+1)
+    *PAGE_SIZE;
+
+  const ids =
+    state.order.slice(
+      nextStart,
+      nextStart+PAGE_SIZE
+    );
+
+  ids.forEach(id=>{
+
+    const m =
+      memberById(id);
+
+    if(!m){
+      return;
+    }
+
+    const img =
+      new Image();
+
+    img.src =
+      m.image;
+  });
+}
+
+
+/* =========================
+   最初の選択終了
+========================= */
+
+function finishSelection(){
+
+  if(
+    state.selected.length<5
+  ){
+
+    alert(
+      "TOP5を作るには5人以上選んでね！"
+    );
+
+    return;
+  }
+
+  if(
+    state.selected.length===5
+  ){
+
+    startRanking(
+      state.selected
+    );
+
+    return;
+  }
+
+  state.pool =
+    shuffle(
+      state.selected
+    );
+
+  state.narrowPage=0;
+  state.narrowSelected=[];
+
+  state.stage="narrow";
+
+  saveState();
+  render();
+}
+
+
+/* =========================
+   絞り込み
+========================= */
+
+function targetForPool(){
+
+  const n =
+    state.pool.length;
+
+  if(n>30){
+    return 30;
+  }
+
+  if(n>15){
+    return 15;
+  }
+
+  if(n>8){
+    return 8;
+  }
+
+  return 5;
+}
+
+
+function renderNarrow(){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+  const target =
+    targetForPool();
+
+  const start =
+    state.narrowPage
+    *PAGE_SIZE;
+
+  const ids =
+    state.pool.slice(
+      start,
+      start+PAGE_SIZE
+    );
+
+  const totalPages =
+    Math.ceil(
+      state.pool.length
+      /PAGE_SIZE
+    );
+
+  app.innerHTML=`
+
+    <section class="panel">
+
+      <h2 class="stageTitle">
+        ${target}人まで絞ろう
+      </h2>
+
+      <div class="stageDescription">
+        今回は
+        <strong>${state.pool.length}人</strong>
+        の中から選択。<br>
+        残したい人を選んでね♡
+      </div>
+
+      <div class="counter">
+        ${state.narrowPage+1}
+        /
+        ${totalPages}
+        　♡
+        ${state.narrowSelected.length}
+        / ${target}人
+      </div>
+
+      <div class="grid">
+
+        ${ids.map(
+          id=>personCard(
+            id,
+            state.narrowSelected.includes(id),
+            `toggleNarrow(${id})`
+          )
+        ).join("")}
+
+      </div>
+
+      <div class="actions">
+
+        ${
+          state.narrowPage>0
+          ?`
+          <button
+            class="btn btnSecondary"
+            onclick="previousNarrowPage()"
+          >
+            前へ
+          </button>
+          `
+          :""
+        }
+
+        <button
+          class="btn btnPrimary"
+          onclick="nextNarrowPage()"
+        >
+          ${
+            state.narrowPage
+            ===totalPages-1
+            ?"このメンバーで決定"
+            :"次へ"
+          }
+        </button>
+
+      </div>
+
+    </section>
+  `;
+}
+
+
+function toggleNarrow(id){
+
+  const target =
+    targetForPool();
+
+  if(
+    state.narrowSelected.includes(id)
+  ){
+
+    state.narrowSelected =
+      state.narrowSelected.filter(
+        x=>x!==id
+      );
+
+  }else{
+
+    if(
+      state.narrowSelected.length
+      >=target
+    ){
+
+      alert(
+        `${target}人まで選べます！`
+      );
+
+      return;
+    }
+
+    state.narrowSelected.push(id);
+  }
+
+  saveState();
+  renderNarrow();
+}
+
+
+function previousNarrowPage(){
+
+  if(state.narrowPage>0){
+    state.narrowPage--;
+  }
+
+  saveState();
+  renderNarrow();
+}
+
+
+function nextNarrowPage(){
+
+  const totalPages =
+    Math.ceil(
+      state.pool.length
+      /PAGE_SIZE
+    );
+
+  if(
+    state.narrowPage
+    <totalPages-1
+  ){
+
+    state.narrowPage++;
+
+    saveState();
+    renderNarrow();
+    return;
+  }
+
+  const target =
+    targetForPool();
+
+  if(
+    state.narrowSelected.length
+    !==target
+  ){
+
+    alert(
+      `${target}人ちょうど選んでね！`
+    );
+
+    return;
+  }
+
+  if(target===5){
+
+    startRanking(
+      state.narrowSelected
+    );
+
+    return;
+  }
+
+  state.pool =
+    shuffle(
+      state.narrowSelected
+    );
+
+  state.narrowPage=0;
+  state.narrowSelected=[];
+
+  saveState();
+  renderNarrow();
+}
+
+
+/* =========================
+   順位決定
+========================= */
+
+function startRanking(ids){
+
+  state.rankingPool =
+    [...ids];
+
+  state.sorted = [
+    state.rankingPool[0]
+  ];
+
+  state.insertIndex=1;
+  state.compareIndex=0;
+
+  state.stage="rank";
+
+  saveState();
+  render();
+}
+
+
+function renderRanking(){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+  if(
+    state.insertIndex
+    >=state.rankingPool.length
+  ){
+
+    finishRanking();
+    return;
+  }
+
+  const challenger =
+    state.rankingPool[
+      state.insertIndex
+    ];
+
+  const opponent =
+    state.sorted[
+      state.compareIndex
+    ];
+
+  const a =
+    memberById(challenger);
+
+  const b =
+    memberById(opponent);
+
+  app.innerHTML=`
+
+    <section class="panel">
+
+      <h2 class="stageTitle">
+        どっちが好き顔？
+      </h2>
+
+      <div class="stageDescription">
+        最後は1対1で比較して<br>
+        1位〜5位を決めます♡
+      </div>
+
+      <div class="duel">
+
+        ${duelCard(
+          a,
+          `chooseDuel("challenger")`
+        )}
+
+        ${duelCard(
+          b,
+          `chooseDuel("opponent")`
+        )}
+
+      </div>
+
+      <div class="duelOr">
+        ♡ TAP YOUR FAVORITE ♡
+      </div>
+
+      <div class="notice">
+        より「顔が好き！」と思う方を
+        タップしてね。
+      </div>
+
+    </section>
+  `;
+}
+
+
+function duelCard(m,action){
+
+  return `
+
+    <div
+      class="duelCard"
+      onclick='${action}'
+    >
+
+      <img
+        src="${m.image}"
+        alt=""
+      >
+
+      <div
+        class="group g-${m.group}"
+      >
+        ${m.group}
+      </div>
+
+      <div class="name">
+        ${m.name}
+      </div>
+
+    </div>
+  `;
+}
+
+
+function chooseDuel(choice){
+
+  const challenger =
+    state.rankingPool[
+      state.insertIndex
+    ];
+
+  if(
+    choice==="challenger"
+  ){
+
+    state.sorted.splice(
+      state.compareIndex,
+      0,
+      challenger
+    );
+
+    state.insertIndex++;
+    state.compareIndex=0;
+
+  }else{
+
+    state.compareIndex++;
+
+    if(
+      state.compareIndex
+      >=state.sorted.length
+    ){
+
+      state.sorted.push(
+        challenger
+      );
+
+      state.insertIndex++;
+      state.compareIndex=0;
+    }
+  }
+
+  saveState();
+  renderRanking();
+}
+
+
+function finishRanking(){
+
+  state.result =
+    state.sorted.slice(0,5);
+
+  state.stage="result";
+
+  addHistory();
+
+  saveState();
+  render();
+}
+
+
+/* =========================
+   履歴
+========================= */
+
+function addHistory(){
+
+  let history=[];
+
+  try{
+
+    history =
+      JSON.parse(
+        localStorage.getItem(
+          HISTORY_KEY
+        )
+      ) || [];
+
+  }catch{}
+
+
+  history.unshift({
+    date:
+      new Date().toISOString(),
+
+    result:
+      [...state.result]
+  });
+
+
+  history =
+    history.slice(0,20);
+
+
+  localStorage.setItem(
+    HISTORY_KEY,
+    JSON.stringify(history)
+  );
+}
+
+
+function showHistory(){
+
+  let history=[];
+
+  try{
+
+    history =
+      JSON.parse(
+        localStorage.getItem(
+          HISTORY_KEY
+        )
+      ) || [];
+
+  }catch{}
+
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+
+  if(!history.length){
+
+    app.innerHTML=`
+
+      <section class="panel">
+
+        <h2 class="stageTitle">
+          過去のTOP5
+        </h2>
+
+        <div class="notice">
+          まだ履歴がありません♡
+        </div>
+
+        <button
+          class="btn btnPrimary btnFull"
+          onclick="goHome()"
+        >
+          戻る
+        </button>
+
+      </section>
+    `;
+
+    return;
+  }
+
+
+  app.innerHTML=`
+
+    <section class="panel">
+
+      <h2 class="stageTitle">
+        過去のTOP5
+      </h2>
+
+      ${history.map(
+        (item,index)=>{
+
+          const names =
+            item.result
+            .map(
+              id=>
+                memberById(id)?.name
+                ||""
+            )
+            .join("・");
+
+          return `
+
+            <button
+              class="btn btnSecondary btnFull"
+              onclick="openHistory(${index})"
+            >
+              ${
+                new Date(
+                  item.date
+                )
+                .toLocaleDateString(
+                  "ja-JP"
+                )
+              }
+              <br>
+              <small>
+                ${names}
+              </small>
+            </button>
+
+          `;
+        }
+      ).join("")}
+
+      <button
+        class="btn btnPrimary btnFull"
+        onclick="goHome()"
+      >
+        戻る
+      </button>
+
+    </section>
+  `;
+}
+
+
+function openHistory(index){
+
+  let history=[];
+
+  try{
+
+    history =
+      JSON.parse(
+        localStorage.getItem(
+          HISTORY_KEY
+        )
+      ) || [];
+
+  }catch{}
+
+  if(!history[index]){
+    return;
+  }
+
+  renderResult(
+    history[index].result,
+    true
+  );
+}
+
+
+/* =========================
+   結果画面
+========================= */
+
+function renderResult(
+  ids=state.result,
+  fromHistory=false
+){
+
+  const app =
+    document.getElementById(
+      "app"
+    );
+
+  app.innerHTML=`
+
+    <section class="panel">
+
+      <div class="resultHeader">
+
+        <div class="crown">
+          ♔
+        </div>
+
+        <h2>
+          MY FAVORITE TOP5
+        </h2>
+
+        <div class="stageDescription">
+          あなたの宝塚
+          「好き顔」TOP5♡
+        </div>
+
+      </div>
+
+
+      <div class="resultGrid">
+
+        ${ids.map(
+          (id,index)=>{
+
+            const m =
+              memberById(id);
+
+            return `
+
+              <div class="resultCard">
+
+                <div class="rankBadge">
+                  ${index+1}
+                </div>
+
+                <img
+                  src="${m.image}"
+                  alt=""
+                >
+
+                <div
+                  class="
+                    resultGroup
+                    g-${m.group}
+                  "
+                >
+                  ${m.group}
+                </div>
+
+                <div class="resultName">
+                  ${m.name}
+                </div>
+
+              </div>
+
+            `;
+          }
+        ).join("")}
+
+      </div>
+
+
+      <button
+        class="btn btnPrimary btnFull"
+        onclick='prepareResultImage(${JSON.stringify(ids)})'
+      >
+        🩵 TOP5画像を作る
+      </button>
+
+
+      <div
+        id="imagePreview"
+        class="preview hidden"
+      ></div>
+
+
+      ${
+        fromHistory
+        ?`
+          <button
+            class="btn btnSecondary btnFull"
+            onclick="showHistory()"
+          >
+            履歴へ戻る
+          </button>
+        `
+        :`
+          <button
+            class="btn btnSecondary btnFull"
+            onclick="restartGame()"
+          >
+            もう一度やる
+          </button>
+        `
+      }
+
+
+      <button
+        class="btn btnSecondary btnFull"
+        onclick="goHome()"
+      >
+        TOPへ
+      </button>
+
+    </section>
+  `;
+}
+
+
+/* =========================
+   Canvas補助
+========================= */
+
+function roundRectPath(
+  ctx,x,y,w,h,r
+){
+
+  r =
+    Math.min(
+      r,w/2,h/2
+    );
+
+  ctx.beginPath();
+
+  ctx.moveTo(x+r,y);
+
+  ctx.lineTo(x+w-r,y);
+
+  ctx.quadraticCurveTo(
+    x+w,y,
+    x+w,y+r
+  );
+
+  ctx.lineTo(
+    x+w,
+    y+h-r
+  );
+
+  ctx.quadraticCurveTo(
+    x+w,y+h,
+    x+w-r,y+h
+  );
+
+  ctx.lineTo(
+    x+r,
+    y+h
+  );
+
+  ctx.quadraticCurveTo(
+    x,y+h,
+    x,y+h-r
+  );
+
+  ctx.lineTo(
+    x,
+    y+r
+  );
+
+  ctx.quadraticCurveTo(
+    x,y,
+    x+r,y
+  );
+
+  ctx.closePath();
+}
+
+
+function drawCover(
+  ctx,img,x,y,w,h
+){
+
+  const scale =
+    Math.max(
+      w/img.width,
+      h/img.height
+    );
+
+  const dw =
+    img.width*scale;
+
+  const dh =
+    img.height*scale;
+
+  const dx =
+    x+(w-dw)/2;
+
+  const dy =
+    y+(h-dh)/2;
+
+  ctx.drawImage(
+    img,
+    dx,dy,dw,dh
+  );
+}
+
+
+/* =========================
+   保存用TOP5画像
+========================= */
+
+async function makeResultCanvas(ids){
+
+  const canvas =
+    document.createElement(
+      "canvas"
+    );
+
+  canvas.width=1080;
+  canvas.height=1440;
+
+  const ctx =
+    canvas.getContext("2d");
+
+
+  /* 背景 */
+
+  const gradient =
+    ctx.createLinearGradient(
+      0,0,0,1440
+    );
+
+  gradient.addColorStop(
+    0,
+    "#fafdff"
+  );
+
+  gradient.addColorStop(
+    1,
+    "#eaf7ff"
+  );
+
+  ctx.fillStyle=gradient;
+  ctx.fillRect(
+    0,0,1080,1440
+  );
+
+
+  /* 水色ペイント */
+
+  function paint(
+    x,y,w,h,angle
+  ){
+
+    ctx.save();
+
+    ctx.translate(x,y);
+    ctx.rotate(angle);
+
+    ctx.globalAlpha=.14;
+    ctx.fillStyle="#73bfea";
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      -w/2,
+      -h/3
+    );
+
+    ctx.quadraticCurveTo(
+      -w/5,
+      -h*.8,
+      w/2,
+      -h/4
+    );
+
+    ctx.quadraticCurveTo(
+      w*.45,
+      h*.55,
+      -w/2,
+      h/3
+    );
+
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+
+  paint(
+    130,100,
+    320,75,
+    -.15
+  );
+
+  paint(
+    920,165,
+    300,80,
+    .2
+  );
+
+  paint(
+    90,780,
+    230,70,
+    -.25
+  );
+
+  paint(
+    990,1040,
+    260,75,
+    .22
+  );
+
+  paint(
+    160,1330,
+    330,75,
+    .15
+  );
+
+
+  /* キラキラ */
+
+  function sparkle(
+    x,y,size
+  ){
+
+    ctx.strokeStyle=
+      "#8bbbd6";
+
+    ctx.lineWidth=2;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+      x,y-size
+    );
+
+    ctx.lineTo(
+      x,y+size
+    );
+
+    ctx.moveTo(
+      x-size,y
+    );
+
+    ctx.lineTo(
+      x+size,y
+    );
+
+    ctx.stroke();
+  }
+
+
+  sparkle(
+    65,100,12
+  );
+
+  sparkle(
+    1010,125,15
+  );
+
+  sparkle(
+    55,1290,10
+  );
+
+  sparkle(
+    1015,1260,12
+  );
+
+
+  /* 上の英字 */
+
+  ctx.textAlign="center";
+
+  ctx.fillStyle="#7d9bb0";
+
+  ctx.font=
+    '600 25px Georgia, serif';
+
+  ctx.fillText(
+    "M Y   T A K A R A Z U K A   T O P   5",
+    540,
+    72
+  );
+
+
+  /* タイトル */
+
+  ctx.fillStyle="#304b60";
+
+  ctx.font=
+    '800 57px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+  ctx.fillText(
+    "宝塚 路線スター",
+    540,
+    145
+  );
+
+  ctx.fillStyle="#65afe0";
+
+  ctx.font=
+    '800 68px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+  ctx.fillText(
+    "好き顔 TOP5",
+    540,
+    220
+  );
+
+
+  /* 飾り線 */
+
+  ctx.strokeStyle="#9ccce9";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+  ctx.moveTo(260,255);
+  ctx.lineTo(480,255);
+  ctx.moveTo(600,255);
+  ctx.lineTo(820,255);
+  ctx.stroke();
+
+  ctx.fillStyle="#78b9df";
+  ctx.font="28px serif";
+
+  ctx.fillText(
+    "♡",
+    540,
+    264
+  );
+
+
+  /* =====================
+     1位
+  ===================== */
+
+  const first =
+    memberById(ids[0]);
+
+  const firstImage =
+    await loadImage(
+      first.image
+    );
+
+  const fx=280;
+  const fy=305;
+  const fw=520;
+  const fh=470;
+
+  ctx.save();
+
+  ctx.shadowColor=
+    "rgba(61,118,153,.18)";
+
+  ctx.shadowBlur=25;
+  ctx.shadowOffsetY=8;
+
+  ctx.fillStyle="#fff";
+
+  roundRectPath(
+    ctx,
+    fx,fy,fw,fh,32
+  );
+
+  ctx.fill();
+
+  ctx.restore();
+
+
+  ctx.strokeStyle="#d7b543";
+  ctx.lineWidth=8;
+
+  roundRectPath(
+    ctx,
+    fx,fy,fw,fh,32
+  );
+
+  ctx.stroke();
+
+
+  ctx.save();
+
+  roundRectPath(
+    ctx,
+    fx+10,
+    fy+10,
+    fw-20,
+    330,
+    23
+  );
+
+  ctx.clip();
+
+  drawCover(
+    ctx,
+    firstImage,
+    fx+10,
+    fy+10,
+    fw-20,
+    330
+  );
+
+  ctx.restore();
+
+
+  /* 1位王冠 */
+
+  ctx.fillStyle="#d5b23b";
+  ctx.font="55px serif";
+
+  ctx.fillText(
+    "♛",
+    540,
+    fy-18
+  );
+
+
+  ctx.fillStyle="#d5b23b";
+  ctx.font="800 27px sans-serif";
+
+  ctx.fillText(
+    "1st",
+    540,
+    fy+370
+  );
+
+
+  ctx.fillStyle="#30465a";
+  ctx.font=
+    '800 38px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+  ctx.fillText(
+    first.name,
+    540,
+    fy+416
+  );
+
+
+  ctx.fillStyle=
+    groupColor(
+      first.group
+    );
+
+  ctx.font=
+    '800 23px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+  ctx.fillText(
+    first.group,
+    540,
+    fy+449
+  );
+
+
+  /* =====================
+     2〜5位
+  ===================== */
+
+  const cardW=235;
+  const cardH=395;
+  const gap=18;
+
+  const startX=
+    (
+      1080
+      -(cardW*4+gap*3)
+    )/2;
+
+  for(
+    let i=1;
+    i<5;
+    i++
+  ){
+
+    const m =
+      memberById(
+        ids[i]
+      );
+
+    const image =
+      await loadImage(
+        m.image
+      );
+
+    const x =
+      startX
+      +(i-1)
+      *(cardW+gap);
+
+    const y=835;
+
+
+    ctx.save();
+
+    ctx.shadowColor=
+      "rgba(56,112,146,.13)";
+
+    ctx.shadowBlur=15;
+    ctx.shadowOffsetY=6;
+
+    ctx.fillStyle="#fff";
+
+    roundRectPath(
+      ctx,
+      x,y,
+      cardW,cardH,
+      23
+    );
+
+    ctx.fill();
+
+    ctx.restore();
+
+
+    let border="#8fc8e8";
+
+    if(i===1){
+      border="#b4c1ca";
+    }
+
+    if(i===2){
+      border="#c98d67";
+    }
+
+    ctx.strokeStyle=border;
+    ctx.lineWidth=5;
+
+    roundRectPath(
+      ctx,
+      x,y,
+      cardW,cardH,
+      23
+    );
+
+    ctx.stroke();
+
+
+    ctx.save();
+
+    roundRectPath(
+      ctx,
+      x+7,
+      y+7,
+      cardW-14,
+      270,
+      17
+    );
+
+    ctx.clip();
+
+    drawCover(
+      ctx,
+      image,
+      x+7,
+      y+7,
+      cardW-14,
+      270
+    );
+
+    ctx.restore();
+
+
+    ctx.fillStyle=border;
+
+    ctx.font=
+      "800 24px sans-serif";
+
+    ctx.fillText(
+      `${i+1}`,
+      x+cardW/2,
+      y+306
+    );
+
+
+    ctx.fillStyle="#30465a";
+
+    ctx.font=
+      '800 23px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+    ctx.fillText(
+      m.name,
+      x+cardW/2,
+      y+342
+    );
+
+
+    ctx.fillStyle=
+      groupColor(
+        m.group
+      );
+
+    ctx.font=
+      '800 18px -apple-system, BlinkMacSystemFont, "Yu Gothic", sans-serif';
+
+    ctx.fillText(
+      m.group,
+      x+cardW/2,
+      y+373
+    );
+  }
+
+
+  /* 下部 */
+
+  ctx.strokeStyle="#9bcce8";
+  ctx.lineWidth=2;
+
+  ctx.beginPath();
+
+  ctx.moveTo(
+    300,1305
+  );
+
+  ctx.lineTo(
+    470,1305
+  );
+
+  ctx.moveTo(
+    610,1305
+  );
+
+  ctx.lineTo(
+    780,1305
+  );
+
+  ctx.stroke();
+
+
+  ctx.fillStyle="#73b4da";
+  ctx.font="30px serif";
+
+  ctx.fillText(
+    "✧",
+    540,
+    1315
+  );
+
+
+  const today =
+    new Date()
+    .toLocaleDateString(
+      "ja-JP",
+      {
+        year:"numeric",
+        month:"2-digit",
+        day:"2-digit"
+      }
+    )
+    .replaceAll(
+      "/","."
+    );
+
+
+  ctx.fillStyle="#7c95a6";
+
+  ctx.font=
+    '500 23px Georgia, serif';
+
+  ctx.fillText(
+    today,
+    540,
+    1365
+  );
+
+
+  return canvas;
+}
+
+
+/* =========================
+   組カラー Canvas用
+========================= */
+
+function groupColor(group){
+
+  const colors={
+    "花組":"#ef8fb2",
+    "月組":"#c7a337",
+    "雪組":"#67ad91",
+    "星組":"#58acd3",
+    "宙組":"#9c83d0",
+    "専科":"#725295"
+  };
+
+  return colors[group]
+    ||"#6baed6";
+}
+
+
+/* =========================
+   画像作成
+========================= */
+
+async function prepareResultImage(ids){
+
+  const button =
+    event?.currentTarget;
+
+  if(button){
+
+    button.disabled=true;
+    button.textContent=
+      "画像を作成中…";
+  }
+
+  try{
+
+    const canvas =
+      await makeResultCanvas(
+        ids
+      );
+
+
+    const blob =
+      await new Promise(
+        resolve=>
+          canvas.toBlob(
+            resolve,
+            "image/png"
+          )
+      );
+
+
+    if(!blob){
+      throw new Error(
+        "画像を作成できませんでした"
+      );
+    }
+
+
+    preparedFile =
+      new File(
+        [blob],
+        "takarazuka-top5.png",
+        {
+          type:"image/png"
+        }
+      );
+
+
+    if(preparedURL){
+
+      URL.revokeObjectURL(
+        preparedURL
+      );
+    }
+
+
+    preparedURL =
+      URL.createObjectURL(
+        blob
+      );
+
+
+    const preview =
+      document.getElementById(
+        "imagePreview"
+      );
+
+
+    preview.classList.remove(
+      "hidden"
+    );
+
+
+    preview.innerHTML=`
+
+      <img
+        src="${preparedURL}"
+        alt="TOP5画像"
+      >
+
+      <div class="previewText">
+        画像ができました🩵<br>
+        下のボタンから共有して
+        「画像を保存」を選んでね。
+      </div>
+
+      <button
+        class="btn btnPrimary btnFull"
+        onclick="sharePreparedImage()"
+      >
+        共有して画像を保存
+      </button>
+
+      <div class="previewText">
+        共有が使えない場合は、
+        上の画像を長押しして保存できます。
+      </div>
+    `;
+
+
+    preview.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+
+  }catch(error){
+
+    console.error(error);
+
+    alert(
+      "画像の作成に失敗しました。"
+    );
+
+  }finally{
+
+    if(button){
+
+      button.disabled=false;
+      button.textContent=
+        "🩵 TOP5画像を作る";
+    }
+  }
+}
+
+
+/* =========================
+   iPhone共有
+========================= */
+
+async function sharePreparedImage(){
+
+  if(!preparedFile){
+    return;
+  }
+
+
+  try{
+
+    if(
+      navigator.share
+      &&
+      navigator.canShare
+      &&
+      navigator.canShare({
+        files:[preparedFile]
+      })
+    ){
+
+      await navigator.share({
+        files:[preparedFile],
+        title:"宝塚 好き顔TOP5"
+      });
+
+      return;
+    }
+
+  }catch(error){
+
+    if(
+      error.name==="AbortError"
+    ){
+      return;
+    }
+
+    console.error(error);
+  }
+
+
+  alert(
+    "上の画像を長押しして「写真に保存」を選んでね！"
+  );
+}
+
+
+/* =========================
+   その他
+========================= */
+
+function restartGame(){
+
+  state =
+    initialState();
+
+  state.stage="select";
+
+  saveState();
+  render();
+}
+
+
+function goHome(){
+
+  state.stage="home";
+
+  saveState();
+  render();
+}
+
+
+/* =========================
+   全体描画
+========================= */
+
+function render(){
+
+  renderProgress();
+
+  switch(state.stage){
+
+    case "select":
+      renderSelection();
+      break;
+
+    case "narrow":
+      renderNarrow();
+      break;
+
+    case "rank":
+      renderRanking();
+      break;
+
+    case "result":
+      renderResult();
+      break;
+
+    default:
+      renderHome();
+  }
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>
